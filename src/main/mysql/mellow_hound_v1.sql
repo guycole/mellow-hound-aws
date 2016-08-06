@@ -235,6 +235,37 @@ CREATE  TABLE IF NOT EXISTS `mellow_hound_v1`.`lte` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `mellow_hound_v1`.`application_log`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mellow_hound_v1`.`application_log` ;
+
+CREATE  TABLE IF NOT EXISTS `mellow_hound_v1`.`application_log` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `task_id` BIGINT UNSIGNED NOT NULL ,
+  `time_stamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `level` INT NOT NULL ,
+  `facility` VARCHAR(32) NOT NULL ,
+  `event` VARCHAR(128) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mellow_hound_v1`.`task_log`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mellow_hound_v1`.`task_log` ;
+
+CREATE  TABLE IF NOT EXISTS `mellow_hound_v1`.`task_log` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `time_stamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `command` VARCHAR(128) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
+ENGINE = InnoDB;
+
 USE `mellow_hound_v1` ;
 
 
