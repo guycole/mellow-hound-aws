@@ -1,0 +1,42 @@
+#
+#curlCommand: /opt/local/bin/curl -L -s
+#curlCommand: /usr/bin/curl -L -s
+#
+#dumpCommand: /usr/local/mysql/bin/mysqldump
+dumpCommand: /usr/bin/mysqldump
+#
+findCommand: /usr/bin/find
+#findCommand: /bin/find
+#
+gzipCommand: /opt/local/bin/gzip
+#gzipCommand: /bin/gzip
+#
+javaCommand: /usr/bin/java
+#
+openSslCommand: /opt/local/bin/openssl
+#openSslCommand: /usr/bin/openssl
+#
+rmCommand: /bin/rm
+#
+tarCommand: /usr/bin/tar
+$tarCommand: /bin/tar
+#
+s3Name: mythic-digiburo-com
+sqsName: mythic-fresh-file
+#
+eodDataDir: /Users/gsc/desktop/mythic/ftp.eoddata.com
+importDir: /Users/gsc/desktop/mythic/import
+workDir: /Users/gsc/desktop/mythic/mythic_work
+#
+mySqlUserName: mythic
+mySqlPassWord: bogus
+mySqlDataBase: mythic_eoddata_v1
+mySqlHostName: localhost
+#mySqlHostName: 192.168.3.35
+#
+mySqlDumpUserName: mythic
+mySqlDumpPassWord: bogus
+mySqlDumpDataBase: mythic_collector_v1
+mySqlDumpHostName: localhost
+#mySqlDumpHostName: 192.168.3.35
+#
