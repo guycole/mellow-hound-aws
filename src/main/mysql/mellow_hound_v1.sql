@@ -181,7 +181,7 @@ CREATE  TABLE IF NOT EXISTS `mellow_hound_v1`.`cdma` (
   `evdo_ecio` INT NOT NULL ,
   `evdo_level` INT NOT NULL ,
   `evdo_snr` INT NOT NULL ,
-  `evdo_level` INT NOT NULL ,
+  `level` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;
