@@ -54,7 +54,7 @@ CREATE  TABLE IF NOT EXISTS `mellow_hound_v1`.`ble` (
   `address` VARCHAR(48) NOT NULL ,
   `name` VARCHAR(48) NOT NULL ,
   `rssi` INT NOT NULL ,
-  `raw_scan` VARCHAR(128) NOT NULL ,
+  `raw_scan` VARCHAR(256) NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   INDEX `ndx1` (`address` ASC, `name` ASC) )
@@ -116,6 +116,8 @@ CREATE  TABLE IF NOT EXISTS `mellow_hound_v1`.`observation` (
   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `installation_id` BIGINT UNSIGNED NOT NULL ,
   `sortie_id` BIGINT UNSIGNED NOT NULL ,
+  `network_name` VARCHAR(48) NOT NULL ,
+  `network_operator` VARCHAR(48) NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;
