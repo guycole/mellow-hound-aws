@@ -152,6 +152,7 @@ DROP TABLE IF EXISTS `mellow_hound_v1`.`census` ;
 
 CREATE  TABLE IF NOT EXISTS `mellow_hound_v1`.`census` (
   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `task_id` BIGINT UNSIGNED NOT NULL ,
   `time_stamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `population` BIGINT NOT NULL ,
   `table` VARCHAR(64) NOT NULL ,
