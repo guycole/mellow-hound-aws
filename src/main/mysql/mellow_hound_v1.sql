@@ -130,7 +130,7 @@ DROP TABLE IF EXISTS `mellow_hound_v1`.`load_log` ;
 
 CREATE  TABLE IF NOT EXISTS `mellow_hound_v1`.`load_log` (
   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `installation_id` BIGINT UNSIGNED NOT NULL ,
+  `task_id` BIGINT UNSIGNED NOT NULL ,
   `observation_id` BIGINT UNSIGNED NOT NULL ,
   `version` INT NOT NULL ,
   `file_name` VARCHAR(64) NOT NULL ,
