@@ -1,6 +1,6 @@
 #
 # Title:sql_table.py
-# Description:
+# Description: RDBMS wrapper
 # Development Environment:OS X 10.9.3/Python 2.7.7
 # Author:G.S. Cole (guycole at gmail dot com)
 #
@@ -33,6 +33,70 @@ class ApplicationLog(Base):
     def __repr__(self):
         return "<application_log(%d, %d, %s, %d, %s)>" % (self.id, self.task_id, self.facility, self.level, self.event)
 
+class Ble(Base):
+    __tablename__ = 'ble'
+
+    id = Column(BigInteger, primary_key=True)
+    observation_id = Column(BigInteger)
+    address = Column(String)
+    name = Column(String)
+    rssi = Column(Integer)
+    raw_scan = Column(String)
+
+    def __init__(self, observation_id, address, name, rssi, raw_scan):
+        self.observation_id = observation_id
+        self.address = address
+        self.name = name
+        self.rssi = rssi
+        self.raw_scan = raw_scan
+
+    def __repr__(self):
+        return "<ble(%d, %s, %s)>" % (self.id, self.name, self.address)
+
+class Cdma(Base):
+    __tablename__ = 'cdma'
+
+    id = Column(BigInteger, primary_key=True)
+    observation_id = Column(BigInteger)
+    register_flag = Column(Boolean)
+    base_station = Column(Integer)
+    latitude = Column(Integer)
+    longitude = Column(Integer)
+    network = Column(Integer)
+    system = Column(Integer)
+    asu_level = Column(Integer)
+    cdma_dbm = Column(Integer)
+    cdma_ecio = Column(Integer)
+    cdma_level = Column(Integer)
+    dbm = Column(Integer)
+    evdo_dbm = Column(Integer)
+    evdo_ecio = Column(Integer)
+    evdo_level = Column(Integer)
+    evdo_snr = Column(Integer)
+    level = Column(Integer)
+
+    def __init__(self, observation_id):
+        self.observation_id = observation_id
+        self.register_flag = False
+        self.base_station = 0
+        self.latitude = 0
+        self.longitude = 0
+        self.network = 0
+        self.system = 0
+        self.asu_level = 0
+        self.cdma_dbm = 0
+        self.cdma_ecio = 0
+        self.cdma_level = 0
+        self.dbm = 0
+        self.evdo_dbm = 0
+        self.evdo_ecio = 0
+        self.evdo_level = 0
+        self.evdo_snr = 0
+        self.level = 0
+
+    def __repr__(self):
+        return "<cdma(%d, %d)>" % (self.id, self.observation_id)
+
 class Census(Base):
     __tablename__ = 'census'
 
@@ -50,257 +114,162 @@ class Census(Base):
     def __repr__(self):
         return "<census(%d, %s, %d)>" % (self.id, self.table_name, self.population)
 
-class FileStat(Base):
-    __tablename__ = "file_stat"
+class GeoLoc(Base):
+    __tablename__ = 'geo_loc'
 
     id = Column(BigInteger, primary_key=True)
-    creation_task = Column(BigInteger)
-    update_task = Column(BigInteger)
-    size = Column(BigInteger)
-    full_name = Column(String)
-    sha1_hash = Column(String)
-
-    def __init__(self, task, size, full_name, sha1_hash):
-        self.creation_task = task
-        self.update_task = 0
-        self.size = size
-        self.full_name = full_name
-        self.sha1_hash = sha1_hash
-
-class Fundamental(Base):
-    __tablename__ = "fundamental"
-
-    id = Column(BigInteger, primary_key=True)
+    observation_id = Column(BigInteger)
     time_stamp = Column(DateTime, default=datetime.datetime.utcnow)
-    creation_task_id = Column(BigInteger)
-    scorer_task_id = Column(BigInteger)
-    market_date_id = Column(BigInteger)
-    name_id = Column(BigInteger)
-    sector = Column(String)
-    industry = Column(String)
-    pe = Column(Float)
-    eps = Column(Float)
-    div_yield = Column(Float)
-    shares = Column(BigInteger)
-    dps = Column(Float)
-    peg = Column(Float)
-    pts = Column(Float)
-    ptb = Column(Float)
+    provider = Column(String)
+    accuracy = Column(Float)
+    altitude = Column(Float)
+    latitude = Column(Float)
+    longitude = Column(Float)
 
-    def __init__(self, task):
-        self.creation_task_id = task
+    def __init__(self, observation_id, time_stamp, provider, accuracy, altitude, latitude, longitude):
+        self.observation_id = observation_id
+        self.time_stamp = time_stamp
+        self.provider = provider
+        self.accuracy = accuracy
+        self.altitude = altitude
+        self.latitude = latitude
+        self.longitude = longitude
+
+    def __repr__(self):
+        return "<geoloc(%d, %f, %f)>" % (self.id, self.latitude, self.longitude)
+
+class Gsm(Base):
+    __tablename__ = 'gsm'
+
+    id = Column(BigInteger, primary_key=True)
+    observation_id = Column(BigInteger)
+    register_flag = Column(Boolean)
+    arfcn = Column(Integer)
+    bsic = Column(Integer)
+    cid = Column(Integer)
+    lac = Column(Integer)
+    mcc = Column(Integer)
+    mnc = Column(Integer)
+    psc = Column(Integer)
+    asu_level = Column(Integer)
+    dbm = Column(Integer)
+    level = Column(Integer)
+
+    def __init__(self, observation_id):
+        self.observation_id = observation_id
+        self.register_flag = False
+        self.arfcn = 0
+        self.bsic = 0
+        self.cid = 0
+        self.lac = 0
+        self.mcc = 0
+        self.mnc = 0
+        self.psc = 0
+        self.asu_level = 0
+        self.dbm = 0
+        self.level = 0
+
+    def __repr__(self):
+        return "<gsm(%d, %d)>" % (self.id, self.observation_id)
+
+class Installation(Base):
+    __tablename__ = "installation"
+
+    id = Column(BigInteger, primary_key=True)
+    uuid = Column(String)
+    phone_line = Column(String)
+    platform = Column(String)
+    device = Column(String)
+    note = Column(String)
+
+    def __init__(self, uuid, phone_line, platform):
+        self.uuid = uuid
+        self.phone_line = phone_line
+        self.platform = platform
+        self.device = 'unknown'
+        self.note = 'no note'
+
+    def __repr__(self):
+        return "<installation(%d, %s, %s)>" % (self.id, self.phone_line, self.uuid)
 
 class LoadLog(Base):
     __tablename__ = 'load_log'
 
     id = Column(BigInteger, primary_key=True)
-    creation_task = Column(BigInteger)
-    update_task = Column(BigInteger)
-    market = Column(String)
-    directory = Column(String)
+    task_id = Column(BigInteger)
+    observation_id = Column(BigInteger)
+    version = Column(Integer)
     file_name = Column(String)
-    full_name = Column(String)
-    duplicate_row = Column(Integer)
-    fail_row = Column(Integer)
-    success_row = Column(Integer)
-    fresh_name_row = Column(Integer)
-    duration = Column(Integer)
+    ble_pop = Column(Integer)
+    cell_cdma_pop = Column(Integer)
+    cell_gsm_pop = Column(Integer)
+    cell_lte_pop = Column(Integer)
+    cell_wcdma_pop = Column(Integer)
+    wifi_pop = Column(Integer)
 
-    def __init__(self, task, market, directory, file_name, full_name):
-        self.creation_task = task
-        self.update_task = 0
-        self.market = market
-        self.directory = directory
+    def __init__(self, task_id, observation_id, version, file_name):
+        self.task_id = task_id
+        self.observation_id = observation_id
+        self.version = version
         self.file_name = file_name
-        self.full_name = full_name
-        self.duplicate_row = 0
-        self.fail_row = 0
-        self.success_row = 0
-        self.fresh_name_row = 0
-        self.duration = 0
+        self.ble_pop = 0
+        self.cell_cdma_pop = 0
+        self.cell_gsm_pop = 0
+        self.cell_lte_pop = 0
+        self.cell_wcdma_pop = 0
+        self.wifi_pop = 0
 
     def __repr__(self):
         return "<load_log(%d, %s)>" % (self.id, self.file_name)
 
-class LoadLogSummary(Base):
-    __tablename__ = 'load_log_summary'
+class Lte(Base):
+    __tablename__ = 'lte'
 
     id = Column(BigInteger, primary_key=True)
-    creation_task_id = Column(BigInteger)
+    observation_id = Column(BigInteger)
+    register_flag = Column(Boolean)
+    ci = Column(Integer)
+    earfcn = Column(Integer)
+    mcc = Column(Integer)
+    mnc = Column(Integer)
+    pci = Column(Integer)
+    tac = Column(Integer)
+    asu_level = Column(Integer)
+    dbm = Column(Integer)
+    level = Column(Integer)
+    timing_advance = Column(Integer)
 
-    def __init__(self, task):
-        self.creation_task_id = task
-
-class Market(Base):
-    __tablename__ = 'market'
-
-    id = Column(BigInteger, primary_key=True)
-    creation_task = Column(BigInteger)
-    update_task = Column(BigInteger)
-    scorer_task = Column(BigInteger)
-    symbol = Column(String)
-    name = Column(String)
-
-    def __init__(self, task, symbol, name):
-        self.creation_task = task
-        self.update_task = 0
-        self.scorer_task = 0
-        self.symbol = symbol
-        self.name = name
+    def __init__(self, observation_id):
+        self.observation_id = observation_id
+        self.register_flag = False
+        self.ci = 0
+        self.earfcn = 0
+        self.mcc = 0
+        self.mnc = 0
+        self.pci = 0
+        self.tac = 0
+        self.asu_level = 0
+        self.dbm = 0
+        self.level = 0
+        self.timing_advance = 0
 
     def __repr__(self):
-        return "<market(%d, %s, %s)>" % (self.id, self.symbol, self.name)
+        return "<lte(%d, %d)>" % (self.id, self.observation_id)
 
-class MarketDate(Base):
-    __tablename__ = 'market_date'
-
-    id = Column(BigInteger, primary_key=True)
-    creation_task_id = Column(BigInteger)
-
-    def __init__(self, task):
-        self.creation_task_id = task
-
-class Name(Base):
-    __tablename__ = 'name'
+class Observation(Base):
+    __tablename__ = "observation"
 
     id = Column(BigInteger, primary_key=True)
-    creation_task = Column(BigInteger)
-    update_task = Column(BigInteger)
-    market = Column(BigInteger)
-    symbol = Column(String)
-    name = Column(String)
-    active = Column(Boolean)
-    equity = Column(Boolean)
-    mkt_ndx = Column(Boolean)
-    equity_option = Column(Boolean)
-    future = Column(Boolean)
-    forex = Column(Boolean)
-    put_call = Column(Boolean)
-    root_symbol = Column(String)
-    expiration = Column(Date)
-    strike = Column(BigInteger)
+    installation_id = Column(BigInteger)
+    sortie_id = Column(BigInteger)
+    network_name = Column(String)
+    network_operator = Column(String)
 
-    def __init__(self, task, market, symbol, name):
-        self.creation_task = task
-        self.update_task = 0
-        self.market = market
-        self.symbol = symbol
-        self.name = name
-        self.active = True
-        self.equity = True
-        self.mkt_ndx = False
-        self.equity_option = False
-        self.future = False
-        self.forex = False
-        self.put_call = False
-        self.root_symbol = 'None'
-        self.expiration = datetime.datetime.utcfromtimestamp(0)
-        self.strike = 0
-
-    def __repr__(self):
-        return "<name(%d, %s, %s)>" % (self.id, self.symbol, self.name)
-
-class NameChange(Base):
-    __tablename__ = 'name_change'
-
-    id = Column(BigInteger, primary_key=True)
-    creation_task = Column(BigInteger)
-    update_task = Column(BigInteger)
-    scorer_task = Column(BigInteger)
-    change_date = Column(Date)
-    old_market = Column(String)
-    old_symbol = Column(String)
-    new_market = Column(String)
-    new_symbol = Column(String)
-
-    def __init__(self, task, change_date, old_market, old_symbol, new_market, new_symbol):
-        self.creation_task = task
-        self.update_task = 0
-        self.scorer_task = 0
-        self.change_date = change_date
-        self.old_market = old_market
-        self.old_symbol = old_symbol
-        self.new_market = new_market
-        self.new_symbol = new_symbol
-
-    def __repr__(self):
-        return "<name_change(%d, %s, %s)>" % (self.id, self.old_symbol, self.old_market)
-
-class Price(Base):
-    __tablename__ = 'price'
-
-    id = Column(BigInteger, primary_key=True)
-    creation_task_id = Column(BigInteger)
-
-    def __init__(self, task):
-        self.creation_task_id = task
-
-class RawFileLog(Base):
-    __tablename__ = 'raw_file_log'
-
-    id = Column(BigInteger, primary_key=True)
-    creation_task_id = Column(BigInteger)
-    normalized_name = Column(String)
-    update_flag = Column(Boolean)
-    file_size = Column(BigInteger)
-    access_time = Column(BigInteger)
-    create_time = Column(BigInteger)
-    modify_time = Column(BigInteger)
-    sha1_hash = Column(String)
-
-    def __init__(self, task, name, update, size, access, create, modify, sha1):
-        self.creation_task_id = task
-        self.normalized_name = name
-        self.update_flag = update
-        self.file_size = size
-        self.access_time = access
-        self.create_time = create
-        self.modify_time = modify
-        self.sha1_hash = sha1
-
-    def __repr__(self):
-        return "<rawfilelog(%d, %s, %d, %s)>" % (self.id, self.normalized_name, self.file_size, self.sha1_hash)
-
-class RawFileSummary(Base):
-    __tablename__ = 'raw_file_summary'
-
-    id = Column(BigInteger, primary_key=True)
-    time_stamp = Column(DateTime, default=datetime.datetime.utcnow)
-    creation_task_id = Column(BigInteger)
-    duration = Column(Integer)
-    total_pop = Column(Integer)
-    update_pop = Column(Integer)
-
-    def __init__(self, task, duration, total, update):
-        self.creation_task_id = task
-        self.duration = duration
-        self.total_pop = total
-        self.update_pop = update
-
-    def __repr__(self):
-        return "<rawfilesum(%d, %d, %d, %d)>" % (self.id, self.creation_task_id, self.duration, self.update_pop)
-
-class Split(Base):
-    __tablename__ = 'split'
-
-    id = Column(BigInteger, primary_key=True)
-    creation_task = Column(BigInteger)
-    scorer_task = Column(BigInteger)
-    market = Column(String)
-    symbol = Column(String)
-    split_date = Column(Date)
-    split_ratio = Column(String)
-
-    def __init__(self, task, split_date, market, symbol, ratio):
-        self.creation_task = task
-        self.scorer_task = 0
-        self.market = market
-        self.symbol = symbol
-        self.split_date = split_date
-        self.split_ratio = ratio
-
-    def __repr__(self):
-        return "<split(%d, %s, %s)>" % (self.id, self.symbol, self.split_ratio)
+    def __init__(self, installation_id, sortie_id, network_name, network_operator):
+        self.installation_id = installation_id
+        self.sortie_id = sortie_id
+        self.network_name = network_name
+        self.network_operator = network_operator
 
 class TaskLog(Base):
     __tablename__ = 'task_log'
@@ -314,15 +283,60 @@ class TaskLog(Base):
     def __repr__(self):
         return "<task_log(%d, %s)>" % (self.id, self.command)
 
-class Technical(Base):
-    __tablename__ = 'technical'
+class Wcdma(Base):
+    __tablename__ = 'wcdma'
 
     id = Column(BigInteger, primary_key=True)
-    command = Column(String)
+    observation_id = Column(BigInteger)
+    register_flag = Column(Boolean)
+    cid = Column(Integer)
+    lac = Column(Integer)
+    mcc = Column(Integer)
+    mnc = Column(Integer)
+    psc = Column(Integer)
+    uarfcn = Column(Integer)
+    asu_level = Column(Integer)
+    dbm = Column(Integer)
+    level = Column(Integer)
 
-    def __init__(self, command):
-        self.command = command
+    def __init__(self, observation_id):
+        self.observation_id = observation_id
+        self.register_flag = False
+        self.cid = 0
+        self.lac = 0
+        self.mcc = 0
+        self.mnc = 0
+        self.psc = 0
+        self.uarfcn = 0
+        self.asu_level = 0
+        self.dbm = 0
+        self.level = 0
 
     def __repr__(self):
-        return "<technical(%d, %s)>" % (self.id, self.command)
+        return "<wcdma(%d, %d)>" % (self.id, self.observation_id)
 
+class WiFi(Base):
+    __tablename__ = 'wifi'
+
+    id = Column(BigInteger, primary_key=True)
+    observation_id = Column(BigInteger)
+    frequency = Column(Integer)
+    level = Column(Integer)
+    ssid = Column(String)
+    bssid = Column(String)
+    capability = Column(String)
+    passpoint_name = Column(String)
+    passpoint_venue = Column(String)
+
+    def __init__(self, observation_id, frequency, level, ssid, bssid, capability):
+        self.observation_id = observation_id
+        self.frequency = frequency
+        self.level = level
+        self.ssid = ssid
+        self.bssid = bssid
+        self.capability = capability
+        self.passpoint_name = 'unknown'
+        self.passpoint_venue = 'unknown'
+
+    def __repr__(self):
+        return "<wifi(%d, %s, %s)>" % (self.id, self.ssid, self.bssid)
