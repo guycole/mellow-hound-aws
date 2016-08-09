@@ -4,18 +4,19 @@ s3Name: mellow-digiburo-com
 sqsName: mellow-fresh-file
 #
 importDir: /var/mellow/hound
+snapShotDir: /mnt/raid/snapshot
 #
 mySqlUserName: mellow
 mySqlPassWord: bogus
 mySqlDataBase: mellow_hound_v1
-mySqlHostName: localhost
-#mySqlHostName: 192.168.3.35
+#mySqlHostName: localhost
+mySqlHostName: 192.168.3.35
 #
 mySqlDumpUserName: mellow
 mySqlDumpPassWord: bogus
 mySqlDumpDataBase: mellow_hound_v1
-mySqlDumpHostName: localhost
-#mySqlDumpHostName: 192.168.3.35
+#mySqlDumpHostName: localhost
+mySqlDumpHostName: 192.168.3.35
 #
 ##################
 #curlCommand: /opt/local/bin/curl -L -s
@@ -24,19 +25,19 @@ mySqlDumpHostName: localhost
 #dumpCommand: /usr/local/mysql/bin/mysqldump
 dumpCommand: /usr/bin/mysqldump
 #
-findCommand: /usr/bin/find
+#findCommand: /usr/bin/find
 #findCommand: /bin/find
 #
-gzipCommand: /opt/local/bin/gzip
-#gzipCommand: /bin/gzip
+#gzipCommand: /opt/local/bin/gzip
+gzipCommand: /bin/gzip
 #
-javaCommand: /usr/bin/java
+#javaCommand: /usr/bin/java
 #
-openSslCommand: /opt/local/bin/openssl
+#openSslCommand: /opt/local/bin/openssl
 #openSslCommand: /usr/bin/openssl
 #
 rmCommand: /bin/rm
 #
-tarCommand: /usr/bin/tar
+#tarCommand: /usr/bin/tar
 #tarCommand: /bin/tar
 #

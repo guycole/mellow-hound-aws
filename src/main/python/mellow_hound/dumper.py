@@ -1,7 +1,7 @@
 #! /usr/bin/python
 #
-# Title:extractor.py
-# Description:dump mythic eoddata and write to AWS S3
+# Title:dumper.py
+# Description:dump mellow hound and write to AWS S3
 # Development Environment:OS X 10.9.3/Python 2.7.7
 # Author:G.S. Cole (guycole at gmail dot com)
 #
@@ -21,7 +21,7 @@ class DumpDriver:
     def execute(self):
         start_time = time.time()
 
-        dump_name = "eoddata-%d-%2.2d-%2.2d.sql.gz" % (datetime.datetime.today().year, datetime.datetime.today().month, datetime.datetime.today().day)
+        dump_name = "hound-%d-%2.2d-%2.2d.sql.gz" % (datetime.datetime.today().year, datetime.datetime.today().month, datetime.datetime.today().day)
         dump_path = "%s/%s" % (snapshot_dir, dump_name)
         command = "%s -u %s -p%s %s | %s > %s" % (dump_command, mysql_username, mysql_password, mysql_database, gzip_command, dump_path)
         print command
@@ -51,7 +51,7 @@ print 'start'
 #
 if __name__ == '__main__':
     syslog.openlog(logoption=syslog.LOG_PID, facility=syslog.LOG_LOCAL3)
-    syslog.syslog(syslog.LOG_INFO, 'start mythic eoddata dump')
+    syslog.syslog(syslog.LOG_INFO, 'start mellow hound dump')
 
     if len(sys.argv) > 1:
         yamlFileName = sys.argv[1]
@@ -73,7 +73,7 @@ if __name__ == '__main__':
     driver = DumpDriver()
     duration = driver.execute()
 
-    syslog.syslog(syslog.LOG_INFO, 'stop mythic eoddata dump')
+    syslog.syslog(syslog.LOG_INFO, 'stop mellow hound dump')
     syslog.closelog()
 
 print 'stop'

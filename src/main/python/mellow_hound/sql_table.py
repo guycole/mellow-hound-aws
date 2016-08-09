@@ -102,17 +102,17 @@ class Census(Base):
 
     id = Column(BigInteger, primary_key=True)
     time_stamp = Column(DateTime, default=datetime.datetime.utcnow)
-    census_task_id = Column(BigInteger)
-    table_name = Column(String)
+    task_id = Column(BigInteger)
+    table = Column(String)
     population = Column(BigInteger)
 
     def __init__(self, task, table_name, population):
-        self.census_task_id = task
-        self.table_name = table_name
+        self.task_id = task
+        self.table = table_name
         self.population = population
 
     def __repr__(self):
-        return "<census(%d, %s, %d)>" % (self.id, self.table_name, self.population)
+        return "<census(%d, %s, %d)>" % (self.id, self.table, self.population)
 
 class GeoLoc(Base):
     __tablename__ = 'geo_loc'

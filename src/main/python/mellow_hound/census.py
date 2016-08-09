@@ -15,21 +15,18 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from sql_table import ApplicationLog
+from sql_table import Ble
+from sql_table import Cdma
 from sql_table import Census
-from sql_table import FileStat
-from sql_table import Fundamental
+from sql_table import GeoLoc
+from sql_table import Gsm
+from sql_table import Installation
 from sql_table import LoadLog
-from sql_table import LoadLogSummary
-from sql_table import Market
-from sql_table import MarketDate
-from sql_table import Name
-from sql_table import NameChange
-from sql_table import Price
-from sql_table import RawFileLog
-from sql_table import RawFileSummary
-from sql_table import Split
+from sql_table import Lte
+from sql_table import Observation
 from sql_table import TaskLog
-from sql_table import Technical
+from sql_table import Wcdma
+from sql_table import WiFi
 
 class CensusDriver:
 
@@ -44,47 +41,38 @@ class CensusDriver:
         population = session.query(func.count(ApplicationLog.id)).scalar()
         self.census(task_id, 'application_log', population, session)
 
-        population = session.query(func.count(FileStat.id)).scalar()
-        self.census(task_id, 'file_stat', population, session)
+        population = session.query(func.count(Ble.id)).scalar()
+        self.census(task_id, 'ble', population, session)
 
-        population = session.query(func.count(Fundamental.id)).scalar()
-        self.census(task_id, 'fundamental', population, session)
+        population = session.query(func.count(Cdma.id)).scalar()
+        self.census(task_id, 'cdma', population, session)
+
+        population = session.query(func.count(GeoLoc.id)).scalar()
+        self.census(task_id, 'geoloc', population, session)
+
+        population = session.query(func.count(Gsm.id)).scalar()
+        self.census(task_id, 'gsm', population, session)
+
+        population = session.query(func.count(Installation.id)).scalar()
+        self.census(task_id, 'installation', population, session)
 
         population = session.query(func.count(LoadLog.id)).scalar()
         self.census(task_id, 'load_log', population, session)
 
-        population = session.query(func.count(LoadLogSummary.id)).scalar()
-        self.census(task_id, 'load_log_summary', population, session)
+        population = session.query(func.count(Lte.id)).scalar()
+        self.census(task_id, 'lte', population, session)
 
-        population = session.query(func.count(Market.id)).scalar()
-        self.census(task_id, 'market', population, session)
-
-        population = session.query(func.count(MarketDate.id)).scalar()
-        self.census(task_id, 'market_date', population, session)
-
-        population = session.query(func.count(Name.id)).scalar()
-        self.census(task_id, 'name', population, session)
-
-        population = session.query(func.count(NameChange.id)).scalar()
-        self.census(task_id, 'name_change', population, session)
-
-        population = session.query(func.count(Price.id)).scalar()
-        self.census(task_id, 'price', population, session)
-
-        population = session.query(func.count(RawFileLog.id)).scalar()
-        self.census(task_id, 'raw_file_log', population, session)
-
-        population = session.query(func.count(RawFileSummary.id)).scalar()
-        self.census(task_id, 'raw_file_summary', population, session)
-
-        population = session.query(func.count(Split.id)).scalar()
-        self.census(task_id, 'split', population, session)
+        population = session.query(func.count(Observation.id)).scalar()
+        self.census(task_id, 'observation', population, session)
 
         population = session.query(func.count(TaskLog.id)).scalar()
         self.census(task_id, 'task_log', population, session)
 
-        population = session.query(func.count(Technical.id)).scalar()
-        self.census(task_id, 'technical', population, session)
+        population = session.query(func.count(Wcdma.id)).scalar()
+        self.census(task_id, 'wcdma', population, session)
+
+        population = session.query(func.count(WiFi.id)).scalar()
+        self.census(task_id, 'wifi', population, session)
 
         stop_time = time.time()
         return stop_time - start_time
@@ -96,7 +84,7 @@ print 'start'
 #
 if __name__ == '__main__':
     syslog.openlog(logoption=syslog.LOG_PID, facility=syslog.LOG_LOCAL3)
-    syslog.syslog(syslog.LOG_INFO, 'start mythic eoddata census')
+    syslog.syslog(syslog.LOG_INFO, 'start mellow hound census')
 
     if len(sys.argv) > 1:
         fileName = sys.argv[1]
@@ -135,7 +123,7 @@ if __name__ == '__main__':
     session.commit()
     session.close()
 
-    syslog.syslog(syslog.LOG_INFO, 'stop mythic eoddata census')
+    syslog.syslog(syslog.LOG_INFO, 'stop mellow hound census')
     syslog.closelog()
 
 print 'stop'

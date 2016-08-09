@@ -7,9 +7,9 @@
 #
 PATH=/bin:/usr/bin:/etc:/usr/local/bin; export PATH
 #
-PYTHONPATH=/home/gsc/github/mythic-crux-aws/mythic-eoddata/src/main/python/mythic_eoddata; export PYTHONPATH
+PYTHONPATH=/home/gsc/github/mellow-hound-aws/src/main/python/mellow_hound; export PYTHONPATH
 #
 /usr/bin/logger -i -p local3.info census start
-/home/gsc/github/mythic-crux-aws/mythic-eoddata/src/main/python/mythic_eoddata/census.py /home/gsc/github/mythic-crux-aws/mythic-eoddata/src/main/python/mythic_eoddata/config.db
+/home/gsc/github/mellow-hound-aws/src/main/python/mellow_hound/census.py /home/gsc/github/mellow-hound-aws/src/main/python/mellow_hound/config.db
 /usr/bin/logger -i -p local3.info census stop
 #
