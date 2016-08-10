@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62b525ca-87fa-4520-ba2e-259666317e03" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/python/mellow_hound/config.dev" afterPath="$PROJECT_DIR$/src/main/python/mellow_hound/config.dev" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/python/mellow_hound/sql_table.py" afterPath="$PROJECT_DIR$/src/main/python/mellow_hound/sql_table.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/python/mellow_hound/loader_v1.py" afterPath="$PROJECT_DIR$/src/main/python/mellow_hound/loader_v1.py" />
     </list>
     <ignored path="mellow-hound-aws.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +28,7 @@
       <file leaf-file-name="reader.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/reader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1815">
+            <state relative-caret-position="1605">
               <caret line="121" column="9" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
               <folding>
                 <element signature="e#216#227#0" expanded="true" />
@@ -40,7 +40,7 @@
       <file leaf-file-name="loader.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/loader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1710">
+            <state relative-caret-position="1185">
               <caret line="114" column="31" selection-start-line="114" selection-start-column="31" selection-end-line="114" selection-end-column="31" />
               <folding>
                 <element signature="e#215#226#0" expanded="true" />
@@ -52,8 +52,8 @@
       <file leaf-file-name="loader_v1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/loader_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1151">
-              <caret line="264" column="25" selection-start-line="264" selection-start-column="25" selection-end-line="264" selection-end-column="25" />
+            <state relative-caret-position="656">
+              <caret line="266" column="69" selection-start-line="266" selection-start-column="13" selection-end-line="266" selection-end-column="13" />
               <folding>
                 <element signature="e#179#194#0" expanded="true" />
               </folding>
@@ -64,7 +64,7 @@
       <file leaf-file-name="sql_table.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/sql_table.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="3060">
               <caret line="209" column="68" selection-start-line="209" selection-start-column="2" selection-end-line="209" selection-end-column="68" />
               <folding>
                 <element signature="e#151#166#0" expanded="true" />
@@ -92,8 +92,8 @@
         <option value="$PROJECT_DIR$/src/main/python/mellow_hound/config.dev" />
         <option value="$PROJECT_DIR$/src/main/python/mellow_hound/reader.py" />
         <option value="$PROJECT_DIR$/src/main/python/mellow_hound/sql_table.py" />
-        <option value="$PROJECT_DIR$/src/main/python/mellow_hound/loader_v1.py" />
         <option value="$PROJECT_DIR$/src/main/python/mellow_hound/loader.py" />
+        <option value="$PROJECT_DIR$/src/main/python/mellow_hound/loader_v1.py" />
       </list>
     </option>
   </component>
@@ -108,7 +108,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="231" />
+    <option name="x" value="42" />
     <option name="y" value="22" />
     <option name="width" value="1398" />
     <option name="height" value="806" />
@@ -139,6 +139,8 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -217,8 +219,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -350,14 +350,15 @@
       <workItem from="1470713844814" duration="6956000" />
       <workItem from="1470721693825" duration="241000" />
       <workItem from="1470756974141" duration="3706000" />
+      <workItem from="1470867716201" duration="1013000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28768000" />
+    <option name="totallyTimeSpent" value="29781000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="231" y="22" width="1398" height="806" extended-state="0" />
+    <frame x="42" y="22" width="1398" height="806" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -430,6 +431,46 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/reader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1605">
+          <caret line="121" column="9" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+          <folding>
+            <element signature="e#216#227#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#215#226#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/loader_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3780">
+          <caret line="264" column="25" selection-start-line="264" selection-start-column="25" selection-end-line="264" selection-end-column="25" />
+          <folding>
+            <element signature="e#179#194#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/sql_table.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3060">
+          <caret line="209" column="68" selection-start-line="209" selection-start-column="2" selection-end-line="209" selection-end-column="68" />
+          <folding>
+            <element signature="e#151#166#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/reader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1815">
@@ -659,7 +700,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/reader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1815">
+        <state relative-caret-position="1605">
           <caret line="121" column="9" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
           <folding>
             <element signature="e#216#227#0" expanded="true" />
@@ -676,7 +717,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/sql_table.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
+        <state relative-caret-position="3060">
           <caret line="209" column="68" selection-start-line="209" selection-start-column="2" selection-end-line="209" selection-end-column="68" />
           <folding>
             <element signature="e#151#166#0" expanded="true" />
@@ -686,8 +727,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/loader_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1151">
-          <caret line="264" column="25" selection-start-line="264" selection-start-column="25" selection-end-line="264" selection-end-column="25" />
+        <state relative-caret-position="656">
+          <caret line="266" column="69" selection-start-line="266" selection-start-column="13" selection-end-line="266" selection-end-column="13" />
           <folding>
             <element signature="e#179#194#0" expanded="true" />
           </folding>
@@ -696,7 +737,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/python/mellow_hound/loader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
+        <state relative-caret-position="1185">
           <caret line="114" column="31" selection-start-line="114" selection-start-column="31" selection-end-line="114" selection-end-column="31" />
           <folding>
             <element signature="e#215#226#0" expanded="true" />
